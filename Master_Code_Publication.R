@@ -99,7 +99,7 @@ ph_s_rich <- emmeans(m1, ~ sprayed, type  = "response") %>%
                  pch = 23, fill = "steelblue", size =  1.1, linewidth = 1.2 ) +
   geom_text(aes( y = emmean + SE + 0.5)) +
   scale_x_discrete(breaks = c("FALSE", "TRUE"),
-                   labels = c("Sprayed", "Unsprayed")) +
+                   labels = c("Unsprayed", "Sprayed")) +
   coord_cartesian(
     ylim = c(0, 10), 
     expand = c(top = FALSE, left = TRUE, bottom = FALSE, right = TRUE)) +
@@ -140,6 +140,7 @@ ph_as_rich <- emmeans::emmeans(m1, ~ ash*sprayed) %>%
     axis.ticks.x = element_blank()
   ) +
   labs(y = "Observed species richness", x = NULL)
+ph_as_rich
 
 # Posthoc for time*sprayed
 ph_ts_rich <- emmeans(m1, ~ time*sprayed) %>% 
@@ -168,6 +169,7 @@ ph_ts_rich <- emmeans(m1, ~ time*sprayed) %>%
     axis.ticks.x = element_blank()
   ) +
   labs(y = "Observed species richness", x = NULL)
+ph_ts_rich
 
 # Save figures
 # ggsave("Plots/posthoc_sprayed_richness.png", ph_s_rich, width = 6, height = 6, dpi = 800)
@@ -197,7 +199,7 @@ ph_s_pd <- emmeans(phy_m1, ~ sprayed, type  = "response") %>%
                   pch = 23, fill = "steelblue", size =  1.1, linewidth = 1.2 ) +
   geom_text(aes( y = emmean + SE + 30)) +
   scale_x_discrete(breaks = c("FALSE", "TRUE"),
-                   labels = c("Sprayed", "Unsprayed")) +
+                   labels = c("Unsprayed", "Sprayed")) +
   # coord_cartesian(
   #   ylim = c(0, 10), 
   #   expand = c(top = FALSE, left = TRUE, bottom = FALSE, right = TRUE)) +
